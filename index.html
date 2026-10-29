@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Madina Restaurant | Royal Taste of Channapatna</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            royal: {
+              950: '#06130e',
+              900: '#0a1d16',
+              800: '#0f2920',
+              700: '#14382c',
+            },
+            gold: {
+              100: '#fcf6e6',
+              200: '#f6e4b4',
+              300: '#eccb7c',
+              400: '#e1b147',
+              500: '#cfa030',
+              600: '#b08120',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #06130e; color: #f3f4f6; }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #f6e4b4 0%, #e1b147 50%, #b08120 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-border-glow {
+      box-shadow: 0 0 15px rgba(225, 177, 71, 0.15);
+    }
+    .badge-veg { border: 1.5px solid #22c55e; }
+    .badge-veg::after { content: ''; display: block; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; margin: auto; }
+    .badge-nonveg { border: 1.5px solid #ef4444; }
+    .badge-nonveg::after { content: ''; display: block; width: 6px; height: 6px; background: #ef4444; border-radius: 50%; margin: auto; }
+    /* Hide scrollbars for category bar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-royal-950 pb-28">
+
+  <!-- TOP ROYAL ANNOUNCEMENT -->
+  <div class="bg-gradient-to-r from-royal-950 via-royal-900 to-royal-950 border-b border-gold-500/20 py-2 px-4 text-center text-xs tracking-wider">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-3 text-gold-300">
+      <span class="flex items-center gap-1.5 font-medium"><i class="fa-solid fa-crown text-gold-400"></i> Authentic Dum Cooking & Flame Shawarmas</span>
+      <span class="hidden md:inline text-gold-500/40">•</span>
+      <span class="font-semibold text-white">Min Order: ₹180</span>
+      <span class="hidden md:inline text-gold-500/40">•</span>
+      <span class="text-emerald-400 font-medium"><i class="fa-solid fa-certificate text-xs mr-1"></i> 100% Halal Certified</span>
+    </div>
+  </div>
+
+  <!-- LUXURY NAVBAR -->
+  <header class="bg-royal-950/85 backdrop-blur-md sticky top-0 z-40 border-b border-gold-500/15">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-11 h-11 rounded-full border border-gold-400/40 bg-gradient-to-br from-royal-800 to-royal-900 flex items-center justify-center shadow-lg gold-border-glow">
+          <i class="fa-solid fa-utensils text-gold-400 text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-cinzel text-lg sm:text-xl font-bold tracking-wider gold-gradient-text uppercase">City Madina</h1>
+          <p class="text-[10px] tracking-widest text-gray-400 uppercase font-medium">Fine Traditional Flavours • Est. 2014</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="#about-philosophy" class="hidden sm:inline-block text-xs font-medium text-gray-300 hover:text-gold-300 transition tracking-wide px-3 py-1.5">
+          Our Story
+        </a>
+        <a href="#menu-catalog" class="hidden sm:inline-block text-xs font-semibold text-gold-400 hover:text-gold-300 transition tracking-wide px-3 py-1.5">
+          Menu
+        </a>
+        <button onclick="openAdminModal()" class="text-xs bg-royal-800/80 hover:bg-royal-700 text-gold-200 border border-gold-500/30 px-3.5 py-1.5 rounded-full transition duration-300 flex items-center gap-1.5 font-medium">
+          <i class="fa-solid fa-lock text-[10px] text-gold-400"></i>
+          <span>Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LUXURY HERO BANNER -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-royal-950 via-royal-900 to-royal-950 py-16 sm:py-24 border-b border-gold-500/20">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-400/10 border border-gold-400/30 text-gold-300 text-xs tracking-widest uppercase mb-4">
+        <i class="fa-solid fa-sparkles text-[10px]"></i> Traditional Cuisine in Channapatna
+      </div>
+      <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white tracking-wide leading-tight mb-4">
+        A Royal Feast, <span class="gold-gradient-text">Delivered Warm.</span>
+      </h2>
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-gray-300 font-light leading-relaxed mb-8">
+        From our famed 18-hour marinated Chicken Shawarmas and aromatic Dum Biryanis to velvety Mughlai gravies, every dish is slow-crafted over embers with pure hospitality.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+        <a href="#menu-catalog" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-royal-950 px-6 py-3 rounded-full shadow-lg font-bold tracking-wide transition transform hover:-translate-y-0.5 flex items-center gap-2">
+          <span>Order From Menu</span>
+          <i class="fa-solid fa-arrow-down text-xs"></i>
+        </a>
+        <a href="tel:9980314910" class="bg-royal-800/80 hover:bg-royal-700 text-gold-200 border border-gold-500/40 px-5 py-3 rounded-full transition flex items-center gap-2">
+          <i class="fa-solid fa-phone text-gold-400"></i>
+          <span>Direct Kitchen Line: 9980314910</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND THOUGHTS & CULINARY PHILOSOPHY -->
+  <section id="about-philosophy" class="py-12 bg-royal-950 border-b border-gold-500/15">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs uppercase font-cinzel tracking-widest text-gold-400">Culinary Pillars</span>
+        <h3 class="font-cinzel text-2xl font-bold text-white mt-1">Crafted with Pure Passion</h3>
+        <p class="text-xs text-gray-400 mt-2">Serving traditional culinary perfection at BM Road, Bangalore South.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pillar 1 -->
+        <div class="bg-royal-900/60 rounded-2xl p-6 border border-gold-500/15 hover:border-gold-500/40 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+            <i class="fa-solid fa-fire-burner"></i>
+          </div>
+          <h4 class="font-cinzel font-bold text-gold-200 text-base mb-2">Slow-Embers Dum Biryani</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Sealed pots infused with whole aromatic spices, golden saffron, pure ghee, and succulent halal cuts simmered gently over charcoal embers.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-royal-900/60 rounded-2xl p-6 border border-gold-500/15 hover:border-gold-500/40 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+            <i class="fa-solid fa-mortar-pestle"></i>
+          </div>
+          <h4 class="font-cinzel font-bold text-gold-200 text-base mb-2">Hand-Ground Masalas</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            No premade pastes or industrial preservatives. Our gravies, chicken fries, and signature teetar pepper dishes are freshly grounded each morning.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-royal-900/60 rounded-2xl p-6 border border-gold-500/15 hover:border-gold-500/40 transition duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/30 flex items-center justify-center text-gold-400 text-xl mb-4">
+            <i class="fa-solid fa-bowl-hot"></i>
+          </div>
+          <h4 class="font-cinzel font-bold text-gold-200 text-base mb-2">Flame-Kissed Rotisserie</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Special rotisserie shawarmas shaved fresh per order, wrapped in warm breads with creamy toum garlic sauce, crunchy pickled bites, and melted cheese.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & CATEGORY BAR -->
+  <section id="menu-catalog" class="max-w-6xl mx-auto px-4 pt-10">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="font-cinzel text-2xl font-bold text-white tracking-wide">Grand Dining Menu</h2>
+        <p class="text-xs text-gray-400">Select dishes below and send straight to WhatsApp (+91 9980314910)</p>
+      </div>
+
+      <!-- Search Box -->
+      <div class="relative w-full md:w-80">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-xs"></i>
+        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search Biryani, Shawarma, Naan..." class="w-full bg-royal-900/90 border border-gold-500/25 rounded-full pl-9 pr-4 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-gold-400 transition shadow-inner">
+      </div>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="flex space-x-2 overflow-x-auto pb-3 no-scrollbar text-xs font-medium" id="categoryTabs">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG & CART CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 py-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- MENU ITEMS (Left 2 cols) -->
+    <div class="lg:col-span-2">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-cinzel text-lg font-bold text-gold-300" id="currentCategoryTitle">All Signature Items</h3>
+        <span class="text-xs text-gray-400 font-medium" id="itemCountDisplay">0 items</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="menuContainer">
+        <!-- Dishes will render here with high-res photos -->
+      </div>
+    </div>
+
+    <!-- CART SIDEBAR (Desktop - Right 1 col) -->
+    <div class="hidden lg:block">
+      <div class="bg-royal-900/80 rounded-2xl shadow-xl border border-gold-500/25 p-5 sticky top-24 backdrop-blur-sm">
+        <h3 class="font-cinzel font-bold text-base border-b border-gold-500/20 pb-3 flex items-center justify-between text-gold-200">
+          <span class="flex items-center gap-2">
+            <i class="fa-solid fa-bag-shopping text-gold-400"></i>
+            <span>Your Feast</span>
+          </span>
+          <span id="desktopCartBadge" class="text-xs bg-gold-400/20 text-gold-300 border border-gold-400/40 px-2.5 py-0.5 rounded-full font-bold">0</span>
+        </h3>
+
+        <div id="desktopCartList" class="divide-y divide-gold-500/10 max-h-72 overflow-y-auto my-3 text-xs">
+          <div class="text-center py-10 text-gray-500">
+            <i class="fa-solid fa-utensils text-2xl text-gray-600 mb-2"></i>
+            <p>Your basket is empty.<br>Select items to begin your feast.</p>
+          </div>
+        </div>
+
+        <div id="desktopBillSummary" class="border-t border-gold-500/20 pt-3 space-y-2 text-xs text-gray-300">
+          <div class="flex justify-between"><span>Items Subtotal:</span><span id="deskSubtotal" class="font-semibold text-white">₹0.00</span></div>
+          <div class="flex justify-between text-gray-400"><span>GST (5% applied):</span><span id="deskGst" class="font-semibold text-white">₹0.00</span></div>
+          <div class="flex justify-between text-sm font-bold border-t border-gold-500/20 pt-2 text-gold-300 font-cinzel">
+            <span>Payable Total:</span><span id="deskTotal" class="text-base text-gold-400">₹0.00</span>
+          </div>
+        </div>
+
+        <div id="deskMinOrderAlert" class="mt-3 bg-red-950/60 text-red-300 p-2.5 rounded-xl text-xs border border-red-500/40 hidden flex items-center gap-2">
+          <i class="fa-solid fa-circle-exclamation text-red-400 flex-shrink-0"></i>
+          <span>Add <strong>₹<span id="deskMinDiff">0</span></strong> more to satisfy min order of ₹180.</span>
+        </div>
+
+        <button id="deskCheckoutBtn" onclick="openCheckoutModal()" disabled class="w-full mt-4 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center gap-2.5 text-xs tracking-wider uppercase">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Send Order on WhatsApp</span>
+        </button>
+
+        <p class="text-[10px] text-center text-gray-500 mt-2">
+          Direct to Kitchen: +91 9980314910
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MOBILE BOTTOM FLOATING BAR -->
+  <div id="mobileCartBar" class="lg:hidden fixed bottom-0 left-0 right-0 bg-royal-950/95 backdrop-blur-md border-t border-gold-500/20 px-4 py-3 shadow-2xl flex items-center justify-between z-30">
+    <div>
+      <p class="text-[10px] text-gray-400 tracking-wider uppercase"><span id="mobileCount">0</span> Dishes In Cart</p>
+      <p class="text-lg font-bold text-gold-400 font-cinzel" id="mobileTotal">₹0.00</p>
+    </div>
+    <button id="mobileCheckoutBtn" onclick="openCheckoutModal()" disabled class="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-lg disabled:opacity-40 text-xs flex items-center gap-2">
+      <i class="fa-brands fa-whatsapp text-base"></i>
+      <span id="mobileBtnText">Checkout (Min ₹180)</span>
+    </button>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-royal-900 border border-gold-500/30 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gold-300 text-lg transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 class="font-cinzel text-lg font-bold text-white mb-0.5">Order Confirmation</h3>
+      <p class="text-xs text-gold-300/80 mb-4">Formatted directly for City Madina's Kitchen WhatsApp (+91 9980314910)</p>
+
+      <form onsubmit="handleSendWhatsApp(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-semibold text-gray-300 mb-1">Your Full Name *</label>
+          <input type="text" id="custName" required placeholder="e.g. Farhan Hassan" class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-400">
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-300 mb-1">Mobile Contact *</label>
+          <input type="tel" id="custPhone" required placeholder="e.g. 9980314910" class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-400">
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-300 mb-1">Service Preference *</label>
+          <select id="custOrderType" class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-400">
+            <option value="Home Delivery">Doorstep Home Delivery</option>
+            <option value="Hotel Room Service">Hotel Guest Room Service</option>
+            <option value="Takeaway / Parcel">Takeaway / Express Pickup</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-300 mb-1">Delivery Address or Room Number *</label>
+          <textarea id="custAddress" required rows="2" placeholder="Street, landmark or room number..." class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-gold-400"></textarea>
+        </div>
+
+        <div class="bg-royal-950 p-3.5 rounded-xl border border-gold-500/20 space-y-1.5 text-gray-300">
+          <div class="flex justify-between"><span>Items Subtotal:</span> <span id="modalSubtotal" class="text-white">₹0.00</span></div>
+          <div class="flex justify-between text-gray-400"><span>GST (5%):</span> <span id="modalGst" class="text-white">₹0.00</span></div>
+          <div class="flex justify-between font-bold text-gold-300 text-sm border-t border-gold-500/20 pt-1.5 font-cinzel">
+            <span>Payable Total:</span> <span id="modalTotal" class="text-gold-400">₹0.00</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold py-3.5 rounded-xl shadow transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Launch WhatsApp Order</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN & CONTROL MODAL -->
+  <div id="adminModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-royal-900 border border-gold-500/30 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gold-300 text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- LOGIN -->
+      <div id="adminLoginForm">
+        <h3 class="font-cinzel text-lg font-bold text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-gold-400"></i> City Madina Management Portal
+        </h3>
+        <p class="text-xs text-gray-400 mb-4">Authorized management access for dishes, prices, and stock control.</p>
+
+        <form onsubmit="handleAdminLogin(event)" class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-semibold text-gray-300 mb-1">Admin Email</label>
+            <input type="email" id="adminEmail" required placeholder="farhanhassan1306@gmail.com" class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-400">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-300 mb-1">Password</label>
+            <input type="password" id="adminPassword" required placeholder="••••••••" class="w-full bg-royal-950 border border-gold-500/30 rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-gold-400">
+          </div>
+          <p id="adminError" class="text-red-400 text-xs hidden">Invalid email or password.</p>
+          <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-royal-950 font-bold py-3 rounded-lg text-xs uppercase tracking-wider transition">
+            Login
+          </button>
+        </form>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div id="adminDashboard" class="hidden">
+        <div class="flex items-center justify-between border-b border-gold-500/20 pb-3 mb-4">
+          <div>
+            <h3 class="font-cinzel text-base font-bold text-gold-300">Management Panel</h3>
+            <p class="text-[11px] text-gray-400">Active Manager: <strong id="adminEmailBadge" class="text-white"></strong></p>
+          </div>
+          <button onclick="handleAdminLogout()" class="text-xs bg-red-900/60 hover:bg-red-900 text-red-200 border border-red-500/40 px-3 py-1.5 rounded-lg font-semibold transition">
+            Logout
+          </button>
+        </div>
+
+        <!-- ADD DISH FORM -->
+        <div class="bg-royal-950 p-4 rounded-xl border border-gold-500/20 mb-5 text-xs">
+          <h4 class="font-bold text-gold-200 mb-2 font-cinzel">+ Add Custom Menu Item</h4>
+          <form onsubmit="handleAddNewItem(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input type="text" id="newDishName" placeholder="Dish Title" required class="bg-royal-900 border border-gold-500/30 p-2 rounded text-white">
+            <select id="newDishCategory" class="bg-royal-900 border border-gold-500/30 p-2 rounded text-white">
+              <option value="Shawarma">Shawarma</option>
+              <option value="Rice & Biryani">Rice & Biryani</option>
+              <option value="Starters">Starters</option>
+              <option value="Chicken Dry">Chicken Dry</option>
+              <option value="Chicken Gravy">Chicken Gravy</option>
+              <option value="Mutton Gravy">Mutton Gravy</option>
+              <option value="Paneer Gravy">Paneer Gravy</option>
+              <option value="Paneer Dry">Paneer Dry</option>
+              <option value="Roti & Parota">Roti & Parota</option>
+              <option value="Special Dry">Special Dry</option>
+              <option value="Cold Drinks & Water">Cold Drinks & Water</option>
+            </select>
+            <input type="number" id="newDishPrice" placeholder="Price in ₹" required class="bg-royal-900 border border-gold-500/30 p-2 rounded text-white">
+            <select id="newDishType" class="bg-royal-900 border border-gold-500/30 p-2 rounded text-white">
+              <option value="non-veg">Non-Veg</option>
+              <option value="veg">Veg</option>
+            </select>
+            <button type="submit" class="sm:col-span-2 bg-gold-500 text-royal-950 font-bold py-2.5 rounded hover:bg-gold-400 transition tracking-wide uppercase text-[11px]">
+              Publish Dish to Menu
+            </button>
+          </form>
+        </div>
+
+        <!-- MANAGE EXISTING DISHES -->
+        <div>
+          <h4 class="font-bold text-xs text-gold-300 mb-2 uppercase tracking-wider">Live Inventory Control</h4>
+          <div id="adminMenuList" class="divide-y divide-gold-500/10 max-h-72 overflow-y-auto text-xs border border-gold-500/20 rounded-xl bg-royal-950">
+            <!-- Dishes injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    const HOTEL_WHATSAPP = "919980314910";
+    const MIN_ORDER = 180;
+    const GST_RATE = 0.05; // 5% GST
+    const ADMIN_CREDS = {
+      email: "farhanhassan1306@gmail.com",
+      password: "@Farhan13"
+    };
+
+    // CURATED HIGH RESOLUTION FOOD PHOTOS BY CATEGORY
+    const CATEGORY_IMAGES = {
+      "Shawarma": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=700&q=80",
+      "Rice & Biryani": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=700&q=80",
+      "Starters": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=700&q=80",
+      "Chicken Gravy": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=700&q=80",
+      "Chicken Dry": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=700&q=80",
+      "Special Dry": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80",
+      "Mutton Gravy": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=700&q=80",
+      "Paneer Gravy": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=700&q=80",
+      "Paneer Dry": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=700&q=80",
+      "Roti & Parota": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=700&q=80",
+      "Cold Drinks & Water": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=80"
+    };
+
+    // COMPLETE PHYSICAL MENU
+    const INITIAL_MENU = [
+      // SHAWARMA
+      { id: 1, name: "Shawarma Roll", category: "Shawarma", price: 90, type: "non-veg", available: true },
+      { id: 2, name: "Shawarma Roll - Special", category: "Shawarma", price: 120, type: "non-veg", available: true },
+      { id: 3, name: "Shawarma Roll - Jumbo", category: "Shawarma", price: 150, type: "non-veg", available: true },
+      { id: 4, name: "Cheese Shawarma", category: "Shawarma", price: 110, type: "non-veg", available: true },
+      { id: 5, name: "Schezwan Shawarma", category: "Shawarma", price: 110, type: "non-veg", available: true },
+      { id: 6, name: "Schezwan with Cheese Shawarma", category: "Shawarma", price: 130, type: "non-veg", available: true },
+      { id: 7, name: "Pickle Shawarma", category: "Shawarma", price: 140, type: "non-veg", available: true },
+      { id: 8, name: "Paneer Shawarma", category: "Shawarma", price: 100, type: "veg", available: true },
+      { id: 9, name: "Paneer Schezwan Shawarma", category: "Shawarma", price: 120, type: "veg", available: true },
+
+      // RICE & BIRYANI
+      { id: 10, name: "Chicken Biryani", category: "Rice & Biryani", price: 160, type: "non-veg", available: true },
+      { id: 11, name: "Mutton Biryani", category: "Rice & Biryani", price: 230, type: "non-veg", available: true },
+      { id: 12, name: "Ghee Rice", category: "Rice & Biryani", price: 80, type: "veg", available: true },
+      { id: 13, name: "Ghee Rice - Half", category: "Rice & Biryani", price: 50, type: "veg", available: true },
+      { id: 14, name: "Biryani Rice", category: "Rice & Biryani", price: 100, type: "non-veg", available: true },
+      { id: 15, name: "Biryani Rice - Half", category: "Rice & Biryani", price: 70, type: "non-veg", available: true },
+      { id: 16, name: "Chicken Fried Rice", category: "Rice & Biryani", price: 170, type: "non-veg", available: true },
+      { id: 17, name: "Egg Fried Rice", category: "Rice & Biryani", price: 140, type: "non-veg", available: true },
+      { id: 18, name: "Veg Fried Rice", category: "Rice & Biryani", price: 120, type: "veg", available: true },
+
+      // STARTERS
+      { id: 19, name: "Chicken Kabab Full", category: "Starters", price: 240, type: "non-veg", available: true },
+      { id: 20, name: "Chicken Kabab Half", category: "Starters", price: 120, type: "non-veg", available: true },
+      { id: 21, name: "Chicken Grilled Full", category: "Starters", price: 470, type: "non-veg", available: true },
+      { id: 22, name: "Chicken Grilled Half", category: "Starters", price: 240, type: "non-veg", available: true },
+      { id: 23, name: "Chicken Leg Piece", category: "Starters", price: 70, type: "non-veg", available: true },
+      { id: 24, name: "Chicken Lollipop Full", category: "Starters", price: 400, type: "non-veg", available: true },
+      { id: 25, name: "Chicken Lollipop Half", category: "Starters", price: 200, type: "non-veg", available: true },
+
+      // CHICKEN GRAVY
+      { id: 26, name: "Chicken Masala", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 27, name: "Chicken Kadai", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 28, name: "Chicken Hyderabadi", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 29, name: "Chicken Kolhapuri", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 30, name: "Chicken Patiala", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 31, name: "Chicken Khurma", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 32, name: "Butter Chicken", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+      { id: 33, name: "Chicken Kalimirch", category: "Chicken Gravy", price: 200, type: "non-veg", available: true },
+
+      // CHICKEN DRY
+      { id: 34, name: "Chicken Manchurian", category: "Chicken Dry", price: 200, type: "non-veg", available: true },
+      { id: 35, name: "Chicken 65", category: "Chicken Dry", price: 200, type: "non-veg", available: true },
+      { id: 36, name: "Chicken Pepper Dry", category: "Chicken Dry", price: 200, type: "non-veg", available: true },
+      { id: 37, name: "Chicken Chilly", category: "Chicken Dry", price: 200, type: "non-veg", available: true },
+      { id: 38, name: "Lemon Chicken", category: "Chicken Dry", price: 200, type: "non-veg", available: true },
+      { id: 39, name: "Dragon Chicken Boneless Full", category: "Chicken Dry", price: 440, type: "non-veg", available: true },
+      { id: 40, name: "Dragon Chicken Boneless Half", category: "Chicken Dry", price: 220, type: "non-veg", available: true },
+
+      // SPECIAL DRY
+      { id: 41, name: "Teetar Fry", category: "Special Dry", price: 200, type: "non-veg", available: true },
+      { id: 42, name: "Teetar Pepper Dry", category: "Special Dry", price: 250, type: "non-veg", available: true },
+      { id: 43, name: "Junglee Murg (Chicken)", category: "Special Dry", price: 400, type: "non-veg", available: true },
+
+      // MUTTON GRAVY
+      { id: 44, name: "Mutton Masala", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 45, name: "Mutton Kadai", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 46, name: "Mutton Hyderabadi", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 47, name: "Mutton Kolhapuri", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 48, name: "Mutton Patiala", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 49, name: "Mutton Khurma", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 50, name: "Mutton Kalimirchi", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+      { id: 51, name: "Mutton Pepper Dry", category: "Mutton Gravy", price: 230, type: "non-veg", available: true },
+
+      // PANEER GRAVY
+      { id: 52, name: "Paneer Butter Masala", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+      { id: 53, name: "Paneer Kadai", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+      { id: 54, name: "Paneer Khurma", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+      { id: 55, name: "Paneer Hyderabadi", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+      { id: 56, name: "Paneer Kolhapuri", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+      { id: 57, name: "Paneer Patiala", category: "Paneer Gravy", price: 170, type: "veg", available: true },
+
+      // PANEER DRY
+      { id: 58, name: "Paneer Manchurian", category: "Paneer Dry", price: 180, type: "veg", available: true },
+      { id: 59, name: "Paneer Chilly", category: "Paneer Dry", price: 180, type: "veg", available: true },
+      { id: 60, name: "Paneer 65", category: "Paneer Dry", price: 180, type: "veg", available: true },
+      { id: 61, name: "Paneer Pepper Dry", category: "Paneer Dry", price: 180, type: "veg", available: true },
+
+      // ROTI & PAROTA
+      { id: 62, name: "Kerala Parota", category: "Roti & Parota", price: 20, type: "veg", available: true },
+      { id: 63, name: "Ceylon Parota", category: "Roti & Parota", price: 30, type: "veg", available: true },
+      { id: 64, name: "Rumali Roti", category: "Roti & Parota", price: 20, type: "veg", available: true },
+
+      // COLD DRINKS & WATER
+      { id: 65, name: "Cold Drink 300 ml", category: "Cold Drinks & Water", price: 20, type: "veg", available: true },
+      { id: 66, name: "Cold Drink 450 ml", category: "Cold Drinks & Water", price: 40, type: "veg", available: true },
+      { id: 67, name: "Cold Drink 1 Litre", category: "Cold Drinks & Water", price: 50, type: "veg", available: true },
+      { id: 68, name: "Cold Drink 2.25 Litre", category: "Cold Drinks & Water", price: 100, type: "veg", available: true },
+      { id: 69, name: "Mineral Water 500 ml", category: "Cold Drinks & Water", price: 10, type: "veg", available: true },
+      { id: 70, name: "Mineral Water 1 Litre", category: "Cold Drinks & Water", price: 20, type: "veg", available: true },
+      { id: 71, name: "Mineral Water 2 Litre", category: "Cold Drinks & Water", price: 35, type: "veg", available: true }
+    ];
+
+    // APPLICATION STATE
+    let menu = JSON.parse(localStorage.getItem('madina_menu_royal')) || INITIAL_MENU;
+    let cart = {}; // { itemId: quantity }
+    let activeCategory = "All";
+    let searchQuery = "";
+    let isAdminLoggedIn = false;
+
+    function saveMenu() {
+      localStorage.setItem('madina_menu_royal', JSON.stringify(menu));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategories();
+      renderMenu();
+      updateCartUI();
+    });
+
+    // CATEGORY RENDERING
+    function renderCategories() {
+      const categories = ["All", ...new Set(menu.map(i => i.category))];
+      const tabs = document.getElementById('categoryTabs');
+      tabs.innerHTML = categories.map(cat => `
+        <button onclick="setCategory('${cat}')" class="px-4 py-2 rounded-full border whitespace-nowrap transition duration-300 font-cinzel tracking-wider text-xs ${
+          activeCategory === cat 
+            ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-royal-950 border-gold-400 font-bold shadow-md' 
+            : 'bg-royal-900/70 text-gray-300 border-gold-500/20 hover:border-gold-500/50 hover:text-gold-200'
+        }">
+          ${cat}
+        </button>
+      `).join('');
+    }
+
+    function setCategory(cat) {
+      activeCategory = cat;
+      document.getElementById('currentCategoryTitle').innerText = cat === 'All' ? 'All Signature Items' : cat;
+      renderCategories();
+      renderMenu();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.toLowerCase();
+      renderMenu();
+    }
+
+    // MENU ITEM CARDS WITH IMAGERY
+    function renderMenu() {
+      const container = document.getElementById('menuContainer');
+      const filtered = menu.filter(item => {
+        const matchesCategory = activeCategory === "All" || item.category === activeCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      document.getElementById('itemCountDisplay').innerText = `${filtered.length} selections`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-2 text-center py-16 text-gray-500 text-xs font-cinzel">No dishes match your taste inquiry.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const qty = cart[item.id] || 0;
+        const isAvail = item.available !== false;
+        const photoUrl = CATEGORY_IMAGES[item.category] || CATEGORY_IMAGES["Rice & Biryani"];
+        
+        return `
+          <div class="group bg-royal-900/80 rounded-2xl overflow-hidden border border-gold-500/20 hover:border-gold-500/50 transition duration-300 shadow-lg flex flex-col justify-between ${!isAvail ? 'opacity-50 grayscale' : ''}">
+            <div>
+              <div class="h-32 w-full overflow-hidden relative">
+                <img src="${photoUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-royal-900 via-transparent to-black/30"></div>
+                <div class="absolute top-2.5 right-2.5 bg-royal-950/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-gold-500/30 text-[10px] font-bold text-gold-300 font-cinzel">
+                  ${item.category}
+                </div>
+              </div>
+
+              <div class="p-3.5">
+                <div class="flex items-start gap-2">
+                  <span class="inline-block w-3.5 h-3.5 mt-1 rounded-sm flex-shrink-0 ${item.type === 'veg' ? 'badge-veg' : 'badge-nonveg'}" title="${item.type}"></span>
+                  <div>
+                    <h4 class="font-cinzel font-bold text-sm text-white group-hover:text-gold-200 transition leading-snug">${item.name}</h4>
+                    <p class="text-[11px] text-gray-400 mt-0.5">Fresh spices & traditional dum preparation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-3.5 pb-3.5 pt-2 flex items-center justify-between border-t border-gold-500/10">
+              <span class="text-base font-bold font-cinzel text-gold-400">₹${item.price}</span>
+
+              ${!isAvail ? `
+                <span class="text-[10px] uppercase font-bold text-red-400 bg-red-950/70 border border-red-500/30 px-2 py-1 rounded">Out of Stock</span>
+              ` : qty === 0 ? `
+                <button onclick="addToCart(${item.id})" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-royal-950 font-bold px-4 py-1.5 rounded-lg text-xs font-cinzel tracking-wider shadow transition">
+                  ADD +
+                </button>
+              ` : `
+                <div class="flex items-center bg-royal-950 border border-gold-500/40 rounded-lg px-2 py-1 space-x-3 text-xs font-bold text-gold-300 shadow">
+                  <button onclick="decrementCart(${item.id})" class="px-1 hover:text-white transition font-bold text-sm">-</button>
+                  <span class="font-cinzel text-white">${qty}</span>
+                  <button onclick="addToCart(${item.id})" class="px-1 hover:text-white transition font-bold text-sm">+</button>
+                </div>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // CART LOGIC
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      updateCartUI();
+      renderMenu();
+    }
+
+    function decrementCart(id) {
+      if (cart[id]) {
+        cart[id]--;
+        if (cart[id] <= 0) delete cart[id];
+      }
+      updateCartUI();
+      renderMenu();
+    }
+
+    function calculateBill() {
+      let subtotal = 0;
+      let count = 0;
+      for (const [id, qty] of Object.entries(cart)) {
+        const item = menu.find(m => m.id == id);
+        if (item) {
+          subtotal += item.price * qty;
+          count += qty;
+        }
+      }
+      const gst = subtotal * GST_RATE;
+      const total = subtotal + gst;
+      return { subtotal, gst, total, count };
+    }
+
+    function updateCartUI() {
+      const { subtotal, gst, total, count } = calculateBill();
+
+      // Desktop
+      document.getElementById('desktopCartBadge').innerText = count;
+      document.getElementById('deskSubtotal').innerText = `₹${subtotal.toFixed(2)}`;
+      document.getElementById('deskGst').innerText = `₹${gst.toFixed(2)}`;
+      document.getElementById('deskTotal').innerText = `₹${total.toFixed(2)}`;
+
+      const desktopList = document.getElementById('desktopCartList');
+      if (count === 0) {
+        desktopList.innerHTML = `
+          <div class="text-center py-10 text-gray-500">
+            <i class="fa-solid fa-utensils text-2xl text-gray-600 mb-2"></i>
+            <p>Your basket is empty.<br>Select items to begin your feast.</p>
+          </div>
+        `;
+      } else {
+        desktopList.innerHTML = Object.entries(cart).map(([id, qty]) => {
+          const item = menu.find(m => m.id == id);
+          return `
+            <div class="py-2.5 flex items-center justify-between text-xs">
+              <div>
+                <p class="font-bold text-white font-cinzel">${item.name}</p>
+                <p class="text-gold-300/80 font-medium">₹${item.price} × ${qty} = ₹${item.price * qty}</p>
+              </div>
+              <div class="flex items-center space-x-2 bg-royal-950 border border-gold-500/30 rounded px-2 py-0.5">
+                <button onclick="decrementCart(${item.id})" class="text-gray-400 hover:text-white font-bold">-</button>
+                <span class="font-bold text-white font-cinzel">${qty}</span>
+                <button onclick="addToCart(${item.id})" class="text-gray-400 hover:text-white font-bold">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Min order rule (₹180)
+      const deskBtn = document.getElementById('deskCheckoutBtn');
+      const deskAlert = document.getElementById('deskMinOrderAlert');
+      const mobileBtn = document.getElementById('mobileCheckoutBtn');
+      const mobileBtnText = document.getElementById('mobileBtnText');
+
+      if (total >= MIN_ORDER) {
+        deskBtn.removeAttribute('disabled');
+        deskAlert.classList.add('hidden');
+        mobileBtn.removeAttribute('disabled');
+        mobileBtnText.innerText = "Order Now";
+      } else {
+        deskBtn.setAttribute('disabled', 'true');
+        mobileBtn.setAttribute('disabled', 'true');
+        if (count > 0) {
+          deskAlert.classList.remove('hidden');
+          const diff = (MIN_ORDER - total).toFixed(2);
+          document.getElementById('deskMinDiff').innerText = diff;
+          mobileBtnText.innerText = `Add ₹${diff} more`;
+        } else {
+          deskAlert.classList.add('hidden');
+          mobileBtnText.innerText = "Checkout (Min ₹180)";
+        }
+      }
+
+      // Mobile Bottom Bar
+      document.getElementById('mobileCount').innerText = count;
+      document.getElementById('mobileTotal').innerText = `₹${total.toFixed(2)}`;
+    }
+
+    // CHECKOUT MODAL
+    function openCheckoutModal() {
+      const { subtotal, gst, total } = calculateBill();
+      if (total < MIN_ORDER) return;
+
+      document.getElementById('modalSubtotal').innerText = `₹${subtotal.toFixed(2)}`;
+      document.getElementById('modalGst').innerText = `₹${gst.toFixed(2)}`;
+      document.getElementById('modalTotal').innerText = `₹${total.toFixed(2)}`;
+      document.getElementById('checkoutModal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    // WHATSAPP BILL GENERATOR
+    function handleSendWhatsApp(e) {
+      e.preventDefault();
+      const { subtotal, gst, total } = calculateBill();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const orderType = document.getElementById('custOrderType').value;
+      const address = document.getElementById('custAddress').value.trim();
+
+      let itemsList = "";
+      for (const [id, qty] of Object.entries(cart)) {
+        const item = menu.find(m => m.id == id);
+        itemsList += `• ${item.name} x ${qty} = ₹${item.price * qty}\n`;
+      }
+
+      const textMessage = 
+`👑 *NEW ORDER - CITY MADINA RESTAURANT*
+---------------------------------------
+*Customer:* ${name}
+*Phone:* ${phone}
+*Order Type:* ${orderType}
+*Address / Room:* ${address}
+---------------------------------------
+*ITEMS ORDERED:*
+${itemsList}---------------------------------------
+*Subtotal:* ₹${subtotal.toFixed(2)}
+*GST (5%):* ₹${gst.toFixed(2)}
+*PAYABLE TOTAL:* ₹${total.toFixed(2)}
+---------------------------------------
+_Please confirm preparation and delivery time._`;
+
+      const encoded = encodeURIComponent(textMessage);
+      const url = `https://wa.me/${HOTEL_WHATSAPP}?text=${encoded}`;
+
+      // Reset cart and modal
+      cart = {};
+      updateCartUI();
+      renderMenu();
+      closeCheckoutModal();
+
+      // Launch WhatsApp
+      window.open(url, '_blank');
+    }
+
+    // ADMIN MANAGEMENT
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.remove('hidden');
+      if (isAdminLoggedIn) {
+        showAdminDashboard();
+      }
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.add('hidden');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('adminEmail').value.trim();
+      const pass = document.getElementById('adminPassword').value.trim();
+
+      if (email === ADMIN_CREDS.email && pass === ADMIN_CREDS.password) {
+        isAdminLoggedIn = true;
+        document.getElementById('adminError').classList.add('hidden');
+        showAdminDashboard();
+      } else {
+        document.getElementById('adminError').classList.remove('hidden');
+      }
+    }
+
+    function showAdminDashboard() {
+      document.getElementById('adminLoginForm').classList.add('hidden');
+      document.getElementById('adminDashboard').classList.remove('hidden');
+      document.getElementById('adminEmailBadge').innerText = ADMIN_CREDS.email;
+      renderAdminItems();
+    }
+
+    function handleAdminLogout() {
+      isAdminLoggedIn = false;
+      document.getElementById('adminLoginForm').classList.remove('hidden');
+      document.getElementById('adminDashboard').classList.add('hidden');
+      document.getElementById('adminEmail').value = "";
+      document.getElementById('adminPassword').value = "";
+    }
+
+    function renderAdminItems() {
+      const list = document.getElementById('adminMenuList');
+      list.innerHTML = menu.map(item => `
+        <div class="p-3 flex items-center justify-between border-b border-gold-500/10">
+          <div>
+            <p class="font-bold text-white font-cinzel">${item.name}</p>
+            <p class="text-gold-300/80 font-medium">₹${item.price} • ${item.category} • ${item.type.toUpperCase()}</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleAvailability(${item.id})" class="px-2.5 py-1 rounded text-[11px] font-bold ${
+              item.available !== false ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/40' : 'bg-red-950 text-red-400 border border-red-500/40'
+            }">
+              ${item.available !== false ? 'In Stock' : 'Out of Stock'}
+            </button>
+            <button onclick="deleteMenuItem(${item.id})" class="text-red-400 hover:text-red-300 px-2 py-1">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleAvailability(id) {
+      menu = menu.map(m => m.id === id ? { ...m, available: m.available === false } : m);
+      saveMenu();
+      renderAdminItems();
+      renderMenu();
+    }
+
+    function deleteMenuItem(id) {
+      if (confirm("Remove this dish from your live menu?")) {
+        menu = menu.filter(m => m.id !== id);
+        saveMenu();
+        renderAdminItems();
+        renderCategories();
+        renderMenu();
+      }
+    }
+
+    function handleAddNewItem(e) {
+      e.preventDefault();
+      const name = document.getElementById('newDishName').value.trim();
+      const category = document.getElementById('newDishCategory').value;
+      const price = parseFloat(document.getElementById('newDishPrice').value);
+      const type = document.getElementById('newDishType').value;
+
+      const newItem = {
+        id: Date.now(),
+        name,
+        category,
+        price,
+        type,
+        available: true
+      };
+
+      menu.unshift(newItem);
+      saveMenu();
+      renderAdminItems();
+      renderCategories();
+      renderMenu();
+      e.target.reset();
+      alert("Dish published successfully!");
+    }
+  </script>
+</body>
+</html>
